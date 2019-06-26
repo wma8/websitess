@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+
+</head>
+<body>
+
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{#<h1>My name is superman</h1>#}
+{% block title %} Register {% endblock %}
+{#{% if session['user_id'] %}#}
+{#{% endif %}#}
+{% block content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div id="form">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+    <div class="navbar-collapse navbar-collapse_ collapse">
+        <ul class="nav navbar-nav sf-menu clearfix">
+            {% if session['user_id'] %}
+                <li>
+                    <a href="/logout/">logout</a>
+                </li>
+            {% endif %}
+            <a href="/my_page/">my page</a>
+        </ul>
+
+    </div>
+
+{% endblock %}
+
+</body>
+
+</html>
+
